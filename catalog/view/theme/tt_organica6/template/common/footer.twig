@@ -1,0 +1,87 @@
+<div class="wow fadeInUp" data-wow-delay="100ms"></div>
+		{% if block3 %}
+			{{ block3 }}
+		{% endif %}
+<footer>
+  <div class="container wow fadeInUp" data-wow-delay="100ms">
+    <div class="row">
+	  {% if informations %}
+      <div class="col-sm-3 col col-1">
+        <h5>{{ text_information }}</h5>
+        <ul class="list-unstyled">
+         {% for information in informations %}
+          <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      <div class="col-sm-3 col col-2">
+        <h5>{{ text_service }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+          <li><a href="{{ return }}">{{ text_return }}</a></li>
+          <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+          <li><a href="{{ search }}">{{ text_search }}</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3 col col-3">
+        <h5>{{ text_extra }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
+          <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
+          <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
+          <li><a href="{{ special }}">{{ text_special }}</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3 col col-4">
+        <h5>{{ text_account }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ account }}">{{ text_account }}</a></li>
+          <li><a href="{{ order }}">{{ text_order }}</a></li>
+          <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
+          <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
+        </ul>
+      </div>
+    </div>   
+  </div>
+</footer>
+<div class="end-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="powered"><p>{{powered}}</p></div>
+      </div>
+      <div class="col-md-6">
+        <div class="payment"><a href="#" class="f-payment"><img src="image/catalog/demo/img-block/payment.png" alt="payment"></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="back-top" class="hidden-xs"></div>
+<script type="text/javascript">
+$(document).ready(function(){
+	// hide #back-top first
+	$("#back-top").hide();
+	// fade in #back-top
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 300) {
+				$('#back-top').fadeIn().addClass("show");
+			} else {
+				$('#back-top').fadeOut().removeClass("show");
+			}
+		});
+		// scroll body to 0px on click
+		$('#back-top').click(function () {
+			$('body,html').animate({scrollTop: 0}, 800);
+			return false;
+		});
+	});
+});
+new WOW().init();
+</script>
+<!--
+OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+Please donate via PayPal to donate@opencart.com
+//-->
+</body></html>

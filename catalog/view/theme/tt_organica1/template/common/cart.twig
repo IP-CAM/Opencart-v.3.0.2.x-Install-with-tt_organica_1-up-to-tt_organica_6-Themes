@@ -1,0 +1,64 @@
+<div id="cart" class="btn-group btn-block">
+  <button type="button" data-toggle="dropdown" data-loading-text="{{ text_loading }}" class="btn dropdown-toggle"><span id="cart-total"><span class="icon_bag_alt"></span>{{text_items}}</span></button>
+  <ul class="dropdown-menu pull-right">
+    {% if products or vouchers %}
+    <li class="has-scroll">
+		<div class="div-sdiviped">
+        {% for product in products %}
+        <div class="row-cart">
+			<div class="image-cart text-left">
+				{% if product.thumb %} <a href="{{ product.href }}"><img class="img-thumbnail" src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" /></a> {% endif %}
+			</div>
+			<div class="cart-content">
+				<div class="product-name text-left">
+					<a href="{{ product.href }}">{{ product.name }}</a>
+				</div>
+				<span class="box-cart-price text-left">
+					<strong class="text-right">{{ "x"~product.quantity~"-" }}</strong>
+					<span class="cart-price text-right">{{ product.total }}</span>
+				</span>
+				<div class="cart-button button-remove">
+					<button type="button" onclick="cart.remove('{{ product.cart_id }}');" title="{{ button_remove }}" class="btn"><i class="fa fa-times"></i></button>
+				</div>
+				{% if product.option %}
+				<div class="clearfix"></div>
+				{% for option in product.option %}
+				<div>- {{ option.name }} {{ option.value }}</div> {% endfor %}
+				{% endif %}
+				{% if product.recurring %} <br />
+				<div>- {{ text_recurring }} {{ product.recurring }}</div>
+				{% endif %}
+			</div>
+		</div>
+        {% endfor %}
+        {% for voucher in vouchers %}
+        <ul>
+          <li class="text-center"></li>
+          <li class="text-left">{{ voucher.description }}</li>
+          <li class="text-right">x&nbsp;1</li>
+          <li class="text-right">{{ voucher.amount }}</li>
+          <li class="text-center text-danger"><button type="button" onclick="voucher.remove('{{ voucher.key }}');" title="{{ button_remove }}" class="btn btn-danger btn-xs"><i class="ion-android-close"></i></button></li>
+        </ul>
+        {% endfor %}
+	  </div>
+    </li>
+    <li>
+		<div class="row2-cart  div-bordered">
+			<div class="box-cart">
+			  {% for total in totals %}
+				<span class="text-left box-total">{{ total.title ~ " :" }}<span class="text-right text1">{{ total.text }}</span></span>
+			  {% endfor %}
+			</div>
+			<div class="button-cart text-left">
+				<a href="{{ cart }}">{{ text_cart }}</a>
+				<a href="{{ checkout }}">{{ text_checkout }}</a>
+			</div>
+		</div>
+    </li>
+    {% else %}
+    <li>
+      <p class="text-center cart-empty">{{ text_empty }}</p>
+    </li>
+    {% endif %}
+  </ul>
+</div>

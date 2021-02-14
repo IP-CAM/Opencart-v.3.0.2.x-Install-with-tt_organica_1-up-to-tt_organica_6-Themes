@@ -1,0 +1,107 @@
+.quickview-container .btn-cart{
+    padding: 0 20px;
+    text-align: center;
+    color: #6d604c;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 40px;
+    height: 40px;
+    line-height: 40px;
+    border: 2px solid #ababab;
+    max-width: 150px;
+    font-size: 14px;
+}
+#quickview-content .form-group .button-group button.btn-cart{background: #98ab3f !important;}
+#quickview-content .form-group .button-group button{line-height: 32px;}
+#quickview-bg-block {
+	display: none; 
+	background-color : rgba(0,0,0,0.9); 
+	top: 0; 
+	left: 0; 
+	right: 0; 
+	bottom: 0;  
+	margin: auto; 
+	position: fixed; 
+	z-index: 9999;
+}
+.quickview-load-img {  
+	display: none; 
+	position: fixed; 
+	top: 50%; 
+	left: 0; 
+	right: 0; 
+	bottom: 0; 
+	text-align: center; 
+	z-index: 9999; 
+	margin: auto;
+}
+.a-qv-close {
+    position: absolute;
+	box-shadow: 0 0 2px 1px rgba(0,0,0,.1);
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	margin: 0;
+	right: 2px;
+	top: 2px;
+}
+.a-qv-close::before {
+    /* content: "x"; */
+    /* text-align: center; */
+    /* font-size: 12px; */
+    /* line-height: 25px; */
+    /* font-weight: bold; */
+}
+.qv-button-container { 
+	position: relative;
+}
+#quickview-content .alert{
+	margin: 20px 0;
+}
+#quickview-content {
+    position: fixed;
+	background-color: #FFF;
+	border: 2px solid #000;
+	display: none;
+	z-index: 10000;
+	width: 70%;
+	height: 86%;
+	top: 7%;
+	left: 15%;
+	overflow: auto !important;
+	padding: 30px 20px 20px;
+}
+#product2 + div{
+	margin-top: 40px;
+}
+@media(max-width: 1024px){
+	#quickview-content{
+		width: 90%;
+		left: 5%;
+	}
+	.a-qv-close{
+		right: 15px;
+	}
+}
+#quickview-content .image-main {
+    display: inline-block;
+    width: 100%;
+    border: solid 2px #e48080;
+    padding: 10px;
+    border-radius: 5px;
+	margin: 0 0 30px 0;
+}
+#quickview-content a.thumbnail {
+    display: block;
+    padding: 0;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0px;
+    margin: 0;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}

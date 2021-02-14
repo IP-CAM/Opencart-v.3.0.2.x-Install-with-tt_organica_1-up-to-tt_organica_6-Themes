@@ -1,0 +1,85 @@
+<div class="featured-cat-thumb">
+	<div class="featured-categories-container">
+		<div class="module-title3">
+			<h2>{{ heading_title }}</h2>
+			<p class="module-description">{{ module_description }}</p>
+		</div>
+		{% if categories %}
+			{% set count, rows = 0, config_slide.f_rows %}
+			{% if not rows %}
+				{% set rows = 1 %}
+			{% endif %}
+			<div class="owl-featured-categories owl-carousel owl-theme">
+				{% for category in categories %}
+					{% if count % rows == 0 %}
+					<div class="row_items">
+					{% endif %}
+						<div class="fcategory-content">
+							<div class="content-thumb">
+								<a href="{{ category.href }}"><img src="{{ category.thumbnail_image }}" alt="{{ category.name }}" /></a>
+								<a class="name" href="{{ category.href }}">{{ category.name }}</a>
+								{% if config_slide.show_description %}
+									<p class="dec">{{ category.description }}</p>
+								{% endif %}
+								{% if config_slide.show_sub_category %}
+									{% set number_sub = config_slide.number_sub %}
+									{% if category.children %}
+										{% set sub_count = 0 %}
+										<ul class="sub-featured-categories">
+											{% for subcate in category.children %}
+												{% if sub_count < number_sub %}
+												<li><a href="{{ subcate.href }}">{{ subcate.name }}</a></li>
+												{% endif %}
+												{% set sub_count = sub_count + 1 %}
+											{% endfor %}
+										</ul>
+									{% endif %}
+								{% endif %}
+							</div>							
+						</div>
+					{% if (count % rows == 0) or (count == categories|length) %}
+					</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		{% else %}
+			{{ text_empty_featurer_category }}
+		{% endif %}
+	</div>
+</div>
+{% if categories %}
+<script type="text/javascript">
+$(document).ready(function() { 
+	$(".owl-featured-categories").owlCarousel({
+	 	items: {{ config_slide.items }},
+        loop: true,
+        margin: 0,
+        nav: {% if config_slide.f_show_nextback %} true {% else %} false {% endif %},
+        dots: {% if config_slide.f_show_ctr %} true {% else %} false {% endif %},
+        autoplay:  {% if config_slide.autoplay %} true {% else %} false {% endif %},
+        autoplaySpeed: {% if config_slide.f_speed %} {{ config_slide.f_speed }} {% else %} 3000 {% endif %},
+        navSpeed: {% if config_slide.f_speed %} {{ config_slide.f_speed }} {% else %} 3000 {% endif %},
+        dotsSpeed: {% if config_slide.f_speed %} {{ config_slide.f_speed }} {% else %} 3000 {% endif %},
+		lazyLoad: true,
+		navText : ['<i class="ion-chevron-left"></i>','<i class="ion-chevron-right"></i>'],
+        responsive:{
+			0:{
+				items: 1
+			},
+			481:{
+				items: 2
+			},
+			769:{
+				items: 3
+			},
+			1024:{
+				items: 4
+			},
+			1200:{
+				items: {{ config_slide.items }}
+			},
+        }
+	});
+});
+</script>
+{% endif %}
